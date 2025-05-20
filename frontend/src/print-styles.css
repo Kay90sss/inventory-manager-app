@@ -1,0 +1,95 @@
+/* frontend/src/print-styles.css */
+
+/* Styles to apply only when printing */
+@media print {
+  /* ซ่อน Sidebar, Navbar, และส่วนที่ไม่ต้องการพิมพ์ */
+  body > #root > div > aside, /* Sidebar (ปรับ selector ตามโครงสร้าง App.js ของคุณ) */
+  body > #root > div > div > header, /* Navbar (ปรับ selector ตามโครงสร้าง App.js ของคุณ) */
+  .no-print, /* ใช้ class นี้กับ element ที่ไม่ต้องการให้พิมพ์ เช่น ปุ่มต่างๆ */
+  #root > div > div > main > div > div:nth-child(1) > div:nth-child(2) /* ปุ่ม กลับ และ พิมพ์ใบเสร็จ */ {
+    display: none !important;
+  }
+
+  /* กำหนดให้ main content ขยายเต็มหน้า */
+  body > #root > div > div > main {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  body > #root > div > div {
+    display: block !important; /* ทำให้ main content ไม่ถูกบีบโดย flex */
+  }
+  
+  body > #root > div {
+    display: block !important;
+  }
+
+
+  /* จัดสไตล์ส่วนที่ต้องการพิมพ์ (SaleDetailPage) */
+  .print-area {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 20px !important; /* เพิ่ม padding รอบเนื้อหาที่พิมพ์ */
+    box-shadow: none !important;
+    border: none !important;
+    font-size: 12pt !important; /* ปรับขนาด font สำหรับพิมพ์ */
+    color: #000 !important; /* สีตัวอักษรเป็นสีดำ */
+    background-color: #fff !important; /* พื้นหลังเป็นสีขาว */
+  }
+
+  .print-area h1 {
+    font-size: 18pt !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .print-area h2 {
+    font-size: 14pt !important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+
+  .print-area table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 10px;
+  }
+
+  .print-area th,
+  .print-area td {
+    border: 1px solid #ddd !important;
+    padding: 8px !important;
+    text-align: left !important;
+  }
+  
+  .print-area th {
+    background-color: #f2f2f2 !important;
+    font-weight: bold;
+  }
+
+  .print-area .text-right {
+    text-align: right !important;
+  }
+  
+  .print-area .font-semibold {
+    font-weight: 600 !important;
+  }
+
+  .print-area .customer-info-grid strong {
+    display: inline-block;
+    min-width: 100px; /* จัดให้ label มีความกว้างเท่าๆ กัน */
+  }
+
+  .print-area tfoot td {
+    font-weight: bold;
+  }
+  
+  /* ซ่อน scrollbars ที่อาจจะปรากฏ */
+  body {
+    overflow: visible !important;
+  }
+}
